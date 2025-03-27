@@ -26,11 +26,9 @@ Puisqu'il ne contient rien, le dossier *js* peut être enlevé sans problème po
 
 Le dosser *css* et le fichier *style.css* peuvent être enlevés puisqu'ils ne contiennent rien.
 
-
 ![](assets/no_style.png)
 
 ![](assets/css.png)
-
 
 ### Paramètre étrange dans la fonction *appProduct*
 
@@ -52,7 +50,7 @@ function addProduct(values: [string, string, number, number]): void {
 }
 ```
 
-```ts-vue{3,11,14-17}
+```ts-vue{3,10,13-16}
 // Version améliorée
 
 export interface ProductValues{
@@ -78,5 +76,93 @@ function addProduct(values: ProductValues): void {
 ### Commentaires dans le code **HTML**
 
 Des commentaires dans le code **HTML** auraient aider à la compréhension et au repérage.
+
+```html
+<!-- Extrait de code original -->
+
+<h2 class="text-success">Ajouter un produit</h2>
+      <div class="row">
+        <div class="col-6" id="name">
+          <label for="newName" class="label-form">Nom*</label>
+          <input
+            type="text"
+            class="form-control"
+            id="newName"
+            v-model="newName"
+          />
+          <div class="text-danger">
+            {{ newNameErrortext }}
+          </div>
+        </div>
+        <div class="col-6" id="description">
+          <label for="newDescription" class="label-form">Description</label>
+          <input
+            type="text"
+            class="form-control"
+            id="newDescription"
+            v-model="newDescription"
+          />
+        </div>
+
+        <!-- ... -->
+
+        <div id="sendButton">
+          <button
+            type="button"
+            class="btn btn-success mt-3"
+            @click="sendForm()">
+            Ajouter
+          </button>
+        </div>
+      </div>
+```
+
+```html{7,9,16,22,24,36}
+<!-- Extrait de code amélioré -->
+
+<h2 class="text-success">Ajouter un produit</h2>
+
+      <div class="row">
+  
+        <!-- Nom -->
+        <div class="col-6" id="name"> 
+          <!-- Entrée du nom -->
+          <label for="newName" class="label-form">Nom*</label>
+          <input
+            type="text"
+            class="form-control"
+            id="newName"
+            v-model="newName"/>
+          <!-- Champ d'erreur du nom -->
+          <div class="text-danger">
+            {{ newNameErrortext }}
+          </div>
+        </div>
+
+        <!-- Description -->
+        <div class="col-6" id="description">
+          <!-- Entrée de la description-->
+          <label for="newDescription" class="label-form">Description</label>
+          <input
+            type="text"
+            class="form-control"
+            id="newDescription"
+            v-model="newDescription"
+          />
+        </div>
+
+        <!-- ... -->
+
+        <!-- Bouton d'envoi du formulaire -->
+        <div id="sendButton">
+          <button
+            type="button"
+            class="btn btn-success mt-3"
+            @click="sendForm()">
+            Ajouter
+          </button>
+        </div>
+      </div>
+```
 
 ---
