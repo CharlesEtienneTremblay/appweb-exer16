@@ -1,4 +1,3 @@
----
 # Commentaires du professeur
 
 ### Ruptures de stock
@@ -21,7 +20,6 @@ Puisqu'il ne contient rien, le dossier *js* peut être enlevé sans problème po
 
 ![](assets/js.png)
 
-
-### 
+### de
 
 ---
