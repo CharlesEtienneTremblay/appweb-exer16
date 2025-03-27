@@ -50,9 +50,10 @@ function addProduct(values: [string, string, number, number]): void {
 }
 ```
 
-```ts-vue{3,10,13-16}
+```ts-vue{4,11,14-17}
 // Version améliorée
 
+// Dans types.ts
 export interface ProductValues{
     name:string
     description:string
@@ -163,6 +164,35 @@ Des commentaires dans le code **HTML** auraient aider à la compréhension et au
           </button>
         </div>
       </div>
+```
+
+### Utilisation de constantes
+
+Certains endroits pourraient utiliser des constantes au lieu de nombres magiques.
+
+```ts-vue{4-5}
+// Version originale
+
+function pickStockColorIndicator(): void {
+  if (props.product.stock >= 5) stockStatus.value = StockStatus.OK
+  else if (props.product.stock > 0) stockStatus.value = StockStatus.DANGER
+  else stockStatus.value = StockStatus.OUT
+}
+```
+
+```ts-vue{4-5,9-10}
+// Version améliorée
+
+// Dans consts.ts
+export const DANGER_STOCK_THRESHOLD : number = 5
+export const OUT_STOCK_THRESHOLD : number = 0
+
+
+function pickStockColorIndicator(): void {
+  if (props.product.stock >= DANGER_STOCK_THRESHOLD) stockStatus.value = StockStatus.OK
+  else if (props.product.stock > OUT_STOCK_THRESHOLD) stockStatus.value = StockStatus.DANGER
+  else stockStatus.value = StockStatus.OUT
+}
 ```
 
 ---
